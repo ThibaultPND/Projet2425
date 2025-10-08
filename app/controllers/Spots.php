@@ -16,4 +16,3 @@ class Spots extends Controller {
         $this->view('spots/show', ['spot' => $spot]);
     }
 }
-s
