@@ -1,31 +1,11 @@
-<?
-$servername = "172.30.140.23";
-$port = "5432";
-$username = "thibault.chassagne";
-$password = "Sp@gue11i";
-$dbname = "project2425_chassagne_thibault";
+<?php
+require_once '../config/config.php';
 
-$connstring = "host=$host port=$port dbname=$dbname user=$user password=$password";
+// Helpers
+require_once '../helpers/url_helper.php';
+require_once '../helpers/session_helper.php';
 
-$conn = pg_connect($connstring);
-
-if (!$conn) {
-    die("Echec de la connexion: ".pg_last_error());
-}else {
-    echo "HOURA !";
-}
-
-
-$sql = "CREATE TABLE test (CREATE TABLE IF NOT EXISTS test (id INT);";
-
-$rslt = pg_query($conn,$sql);
-
-if (!$rslt) {
-    echo "X Erreur !";
-}else {
-    echo "V Ca marche";
-}
-
-pg_close($conn);
-
-?>
+// Core
+require_once '../core/App.php';
+require_once '../core/Controller.php';
+require_once '../core/Model.php';
