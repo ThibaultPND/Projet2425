@@ -1,40 +1,18 @@
 <?php
 class Spot {
-    private $spots = [
-        [
-            'id' => 1,
-            'nom' => 'CDI - Coin lecture',
-            'confort' => 9,
-            'silence' => 10,
-            'risque' => 4,
-            'description' => 'Ambiance zen, fauteuils moelleux. Parfait pour une sieste de 20 minutes.'
-        ],
-        [
-            'id' => 2,
-            'nom' => 'Salle A205',
-            'confort' => 7,
-            'silence' => 6,
-            'risque' => 5,
-            'description' => 'Chaises dures mais radiateur chaud. Idéal en hiver.'
-        ],
-        [
-            'id' => 3,
-            'nom' => 'Sous l’escalier du bâtiment B',
-            'confort' => 5,
-            'silence' => 3,
-            'risque' => 9,
-            'description' => 'Ambiance roots. À tenter seulement en mission discrète.'
-        ]
-    ];
+	private $db;
 
-    public function getAll() {
-        return $this->spots;
-    }
+	public function __construct(){
+		$this->db = new DataBase;
+	}
 
-    public function getById($id) {
-        foreach ($this->spots as $spot) {
-            if ($spot['id'] == $id) return $spot;
-        }
-        return null;
-    }
+	public function getSpots(){
+		$this->db->query('SELECT * FROM spots ORDER BY created_at DESC');
+		return $this->db->resultSet();
+	}
+	public function getSpotsById($id) {
+		$this->db->query('SELECT * FROM spots WHERE id = :id');
+		$this->db->bind(':id',$id);
+		return $this->db->single();
+	} 
 }
