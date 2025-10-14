@@ -7,7 +7,7 @@
 </head>
 <body>
 <header>
-    <h1>😴 SleepAdvisor</h1>
+    <h1>InsomnIE</h1>
     <nav>
         <a href="<?= URLROOT ?>/spots">Tous les spots</a>
     </nav>

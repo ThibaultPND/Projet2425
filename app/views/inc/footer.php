@@ -1,6 +1,6 @@
 </main>
 <footer>
-    <p>© <?= date('Y') ?> SleepAdvisor — Le guide ultime des siestes scolaires.</p>
+    <p>© <?= date('Y') ?> InsomnIE — Le site préféré de SIIEste.</p>
 </footer>
 </body>
 </html>

@@ -7,7 +7,7 @@ class Spot {
 	}
 
 	public function getSpots(){
-		$this->db->query('SELECT * FROM spots ORDER BY created_at DESC');
+		$this->db->query('SELECT * FROM spots ORDER BY date_ajout DESC');
 		return $this->db->resultSet();
 	}
 	public function getSpotsById($id) {

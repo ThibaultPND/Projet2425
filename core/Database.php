@@ -1,6 +1,9 @@
 <?php 
 require_once '../config/config.php';
-
+/*
+echo "<h1>Hello world</h1>";
+exit();
+*/
 class Database {
 	private $host = DB_HOST;
 	private $name = DB_NAME;
@@ -12,11 +15,11 @@ class Database {
 	private $error;
 
 	public function __construct() {
-		$dsn = 'mysql:host='.$this->host.';dbname='..$this->name.';charset=utf8';
+		$dsn = 'mysql:host='.$this->host.';dbname='.$this->name.';charset=utf8';
 	
 		$options = [
 			PDO::ATTR_PERSISTENT => true,
-			PDO::ATTR_ERRMODE => PDO::ERROMODE_EXCEPTION
+			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 		];
 
 		try {
@@ -28,7 +31,7 @@ class Database {
 	}
 
 	public function query($sql){
-		$this->stmt = $this->dnh->prepare($sql);
+		$this->stmt = $this->dbh->prepare($sql);
 	}
 
 	public function bind($param, $value, $type = null) {
