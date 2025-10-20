@@ -15,4 +15,8 @@ class Spots extends Controller {
         $spot = $this->spotModel->getSpotById($id);
         $this->view('spots/show', ['spot' => $spot]);
     }
+
+    public function plans() {
+    	$this->view('spots/plans');
+    }
 }

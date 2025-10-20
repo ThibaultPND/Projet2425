@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?= SITENAME ?></title>
-    <link rel="stylesheet" href="<?= URLROOT ?>/css/main.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/main.css">
 </head>
 <body>
 <header>
