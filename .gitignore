@@ -1,2 +1,4 @@
-config/config.php
-private_assets
+config/
+private_assets/plans/
+app.log
+arise_credentials.txt
