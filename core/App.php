@@ -33,7 +33,9 @@ class App {
         $this->log("Instance du controller créée : " . get_class($this->controller));
 
         // Redirection si utilisateur non-connecté (Sauf si en cours de connexion)
-        if (!isset($_SESSION['identifiant']) && !($this->controller instanceof Auth)) {
+	if (!isset($_SESSION['identifiant']) 
+		&& !($this->controller instanceof Auth)
+		&& !($this->controller instanceof Maintenance)) {
             $this->log("Utilisateur non connecté, redirection vers /auth/login");
             header('Location: /auth/login');
             exit;
