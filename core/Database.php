@@ -58,6 +58,10 @@ class Database {
 		$this->execute();
 		return $this->stmt->fetchAll(PDO::FETCH_OBJ);
 	}
+	public function resultArray() {
+		$this->execute();
+		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
 
 	public function signle() {
 		$this->execute();

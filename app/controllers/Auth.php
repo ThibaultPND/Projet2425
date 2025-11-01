@@ -9,8 +9,6 @@ class Auth extends Controller {
 	}
 
 	public function __construct() {
-		$this->log("Constructeur Auth appelé");
-		$this->log("Formulaire instant A : " . json_encode($_SESSION));
 
 		require_once("/usr/share/php/ariseid/client/OAuthAriseClient.php");
 		require_once("../config/config.inc.php");
@@ -19,6 +17,9 @@ class Auth extends Controller {
 			session_start();
 			$this->log("Session démarrée dans Auth::_construct");
 		}
+
+		$this->log("Constructeur Auth appelé");
+		$this->log("Formulaire instant A : " . json_encode($_SESSION));
 
 		$this->consumer = OAuthAriseClient::getInstance($consumer_key, $consumer_secret, $consumer_private_key);
 		$this->log("OAuth client instancié");

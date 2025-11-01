@@ -2,3 +2,4 @@ config/
 private_assets/
 app.log
 arise_credentials.txt
+clearLog.sh

@@ -1,4 +1,5 @@
 <?php
+
 class App {
     protected $controller = 'Spots';
     protected $method = 'index';
@@ -36,8 +37,22 @@ class App {
             $this->log("Utilisateur non connecté, redirection vers /auth/login");
             header('Location: /auth/login');
             exit;
-        }
+	}
+	$this->log("Utilisateur connecté.");
 
+	$this->log("Verification de l'état de maintenance du site web...");
+
+	// MAINTENANCE ICI	
+	require_once '../helpers/maintenance_helper.php';
+	
+	$db = new Database();
+	
+	if ((isMaintenanceActive($db)) && !($this->controller instanceof Maintenance)) {
+		$this->log("Serveur actuellement en maintenance. Redirection vers maintenance.php.");
+    		header('Location: /maintenance');
+    		exit;
+	}
+	$this->log("Aucunes maintenance en cours.");
         if (isset($url[1]) && method_exists($this->controller, $url[1])) {
             $this->method = $url[1];
             $this->log("Méthode trouvée : " . $this->method);

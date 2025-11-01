@@ -1,6 +1,7 @@
-<?php require APPROOT . '/views/inc/header.php'; 
+<?php 
+require APPROOT . '/views/inc/header.php'; 
 
-$filename = URLROOT . "/private_assets/plans/plan_rdc.jpg";
+$filename = "../private_assets/plans/plan_dc.jpg";
 $mime = mime_content_type($filename);
 
 header('Content-Type: $mime');
