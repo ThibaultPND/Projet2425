@@ -68,6 +68,14 @@ class Database {
     }
 
     /**
+     * Retourne tous les resultat sous forme de tableau (Array)
+     */
+    public function resultArray(): array {
+    	$this->execute();
+	return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
      * Retourne une seule ligne de résultat
      */
     public function single(): object|false {

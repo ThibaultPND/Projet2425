@@ -6,13 +6,15 @@ class Spot {
 		$this->db = new DataBase;
 	}
 
-	public function getSpots(){
-		$this->db->query('SELECT * FROM spots ORDER BY date_ajout DESC');
+	public function getAll(): array {
+		$this->db->query('SELECT * FROM spots ORDER BY id ASC');
 		return $this->db->resultSet();
 	}
-	public function getSpotsById($id) {
-		$this->db->query('SELECT * FROM spots WHERE id = :id');
-		$this->db->bind(':id',$id);
-		return $this->db->single();
+
+
+	public function getByFloor(string $floor) {
+		$this->db->query('SELECT id, label, floor, x_percent, y_percent, url FROM spots WHERE floor = :floor');
+		$this->db->bind(':floor',$floor);
+		return $this->db->resultSet();
 	} 
 }
